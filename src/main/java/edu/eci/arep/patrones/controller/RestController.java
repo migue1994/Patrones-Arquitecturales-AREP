@@ -2,6 +2,7 @@ package edu.eci.arep.patrones.controller;
 
 import edu.eci.arep.patrones.model.Persona;
 import edu.eci.arep.patrones.service.FormService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,7 @@ import javax.validation.Valid;
 
 @Controller
 public class RestController {
-
-    private FormService formService;
+    private final FormService formService;
 
     public RestController(FormService formService) {
         this.formService = formService;
@@ -43,6 +43,17 @@ public class RestController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>("No fue posible crear la persona",HttpStatus.FORBIDDEN);
+        }
+    }
+
+    @PutMapping("/personas")
+    public ResponseEntity<?> putPersona(@Valid @RequestBody Persona persona){
+
+        try {
+            formService.savePersona(persona);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("No fue posible actualizar la persona",HttpStatus.FORBIDDEN);
         }
     }
 
