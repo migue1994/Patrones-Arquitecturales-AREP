@@ -1,14 +1,14 @@
 var apiclient = (function () {
-	var appUrl = 'http://localhost:8080/personas';
+	var appUrl = 'http://ec2-3-86-85-118.compute-1.amazonaws.com:8080/personas';
 	return {
 		postPersona: function (persona){
-			var putRequest=$.ajax({
+			var postRequest=$.ajax({
 				url:  appUrl,
 				type: 'POST',
 				data: persona,
 				contentType: "application/json"
 			});
-			putRequest.then(
+			postRequest.then(
 				function(){
 					console.info(("OK"));
 					alert("Se ha completado el registro satisfactoriamente");
