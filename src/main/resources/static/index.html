@@ -26,28 +26,27 @@
 </head>
 
 <body>
-<form>
-    <div class="contenedor">
-        <h1>Formulario Arep</h1>
-        <br>
-        <div class="contenedor2">
-            <label class="label">Nombre: </label>
-            <input type="text" id="nombre" class="input" placeholder="Escribe tu nombre"><br>
-            <label class="label">Tipo de documento:</label>
-            <input type="text" placeholder="Escribe tu tipo de documento" id="tdoc" class="input"><br>
-            <label class="label">Número de documento:</label>
-            <input type="text" class="input" placeholder="Escrite tu número de documento" id="ndoc"><br>
-            <label class="label">Email: </label>
-            <input type="text" class="input" placeholder="Escribe tu dirección de correo" id="email"><br>
-            <label class="label">Telefono:</label>
-            <input type="text" id="phone" class="input" placeholder="Escribe tu número telefónico"><br><br>
-            <button type="button" onclick="app.save(nombre.value,tdoc.value,ndoc.value,email.value,phone.value)">
-                Enviar
-            </button>
+    <form>
+        <div class="contenedor">
+            <h1>Formulario Arep</h1>
+            <br>
+            <div class="contenedor2">
+                <label class="label">Nombre: </label>
+                <input type="text" id="nombre" class="input" placeholder="Escribe tu nombre"><br>
+                <label class="label">Tipo de documento:</label>
+                <input type="text" placeholder="Escribe tu tipo de documento" id="tdoc" class="input"><br>
+                <label class="label">Número de documento:</label>
+                <input type="text" class="input" placeholder="Escrite tu número de documento" id="ndoc"><br>
+                <label class="label">Email: </label>
+                <input type="text" class="input" placeholder="Escribe tu dirección de correo" id="email"><br>
+                <label class="label">Telefono:</label>
+                <input type="text" id="phone" class="input" placeholder="Escribe tu número telefónico"><br><br>
+                <button type="button" onclick="app.save(nombre.value,tdoc.value,ndoc.value,email.value,phone.value)">
+                    Enviar
+                </button>
+            </div>
         </div>
-</form>
-<br><br>
-
-</div>
+    </form>
+<br>
 </body>
 </html>
