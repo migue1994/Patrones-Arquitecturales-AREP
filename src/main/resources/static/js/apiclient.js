@@ -1,5 +1,5 @@
 var apiclient = (function () {
-	var appUrl = 'http://localhost:8080/personas/';
+	var appUrl = 'http://localhost:8080/personas';
 	return {
 		postPersona: function (persona){
 			var putRequest=$.ajax({

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/personas")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class RestController {
     private final FormService formService;
 
@@ -18,7 +20,7 @@ public class RestController {
         this.formService = formService;
     }
 
-    @GetMapping("/personas")
+    @GetMapping("")
     public ResponseEntity<?> getPersonas(){
         try {
             return new ResponseEntity<>(formService.getPersonas(), HttpStatus.ACCEPTED);
@@ -27,7 +29,7 @@ public class RestController {
         }
     }
 
-    @GetMapping("/personas/{document}")
+    @GetMapping("/{document}")
     public ResponseEntity<?> getPersona(@PathVariable String document){
         try {
             return new ResponseEntity<>(formService.getPersona(document), HttpStatus.ACCEPTED);
@@ -36,7 +38,7 @@ public class RestController {
         }
     }
 
-    @PostMapping("/personas")
+    @PostMapping("")
     public ResponseEntity<?> postPersona(@Valid @RequestBody Persona persona) {
         try {
             formService.savePersona(persona);
@@ -46,7 +48,7 @@ public class RestController {
         }
     }
 
-    @PutMapping("/personas")
+    @PutMapping("")
     public ResponseEntity<?> putPersona(@Valid @RequestBody Persona persona){
 
         try {
