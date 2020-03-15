@@ -41,3 +41,6 @@ Esto permitirá descagar todo el contenido de este repositorio en su máquina lo
 
 [LICENSE.txt](LICENSE)
 
+## Tutorial
+
+Iniciaremos configurando nuestro almacenamiento estático S3, el cual contendrá el frontend de la plicación web que creamos, para esto, solo debemos ir a nuestra cuenta de AWS, en los servicios, encontraremos una 
