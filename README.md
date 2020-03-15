@@ -43,4 +43,109 @@ Esto permitirá descagar todo el contenido de este repositorio en su máquina lo
 
 ## Tutorial
 
-Iniciaremos configurando nuestro almacenamiento estático S3, el cual contendrá el frontend de la plicación web que creamos, para esto, solo debemos ir a nuestra cuenta de AWS, en los servicios, encontraremos una 
+### Configuración del S3
+
+Iniciaremos configurando nuestro almacenamiento estático S3, el cual contendrá el frontend de la plicación web que creamos, para esto, solo debemos ir a nuestra cuenta de AWS, en los servicios encontraremos en la marte derecha, un menpu de alamacenamiento, que tendrá una opción que dice S3 como lo vemos en la siguiente imagen.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/InicioS3.PNG)
+
+Al darle click, nos aparecerá esta pantalla, donde solo debemos presionar en el botón de crear bucket, un bucket es un contenedor en la nube, en donde se alojará el fronted de la aplicación.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/bucket.PNG)
+
+Una vez hayamos dado click en crear, nos aparecerá el siguiente menú, donde se definirá el nombre del bucket, en este caso lo nombraré como patrones, luego damos en siguiente.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/crearbucket1.PNG)
+
+Nos aparecerá otra interfás de configuración de propiedades, aquí solo dejamos las que hay por defecto y damos en siguiente.
+
+Nos saldrá la configuración de opciones, en donde debemos desmarcar la casilla de bloquear todo el acceso público, esto con el fín de que nuestra UI, este disponible para cualquier usuario.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/configurarbucket2.PNG)
+
+Despues nos aparecerá una configuración de seguridad, la cual dejaremos por defecto y daremos click en crear bucket.
+
+Hecho esto, nos aparecerá el nuevo bucket en la lista de buckets de esta forma
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/bucketcreado.PNG)
+
+Seleccionamos el nuevo buscket, y nos aparecerá la siguiente interfaz, donde podremos cargar nuestros archivos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/interfazbucket.PNG)
+
+Como vemos en la imagen anterior, hay un boton en la parte superior izquierda que nos permite cargar nuestros archivos, damos clicl allí y nos saldra esta ventana de carga, donde podremos cargar los archivos arrastrandolos o mediante la interfaz que todos conocemos, en micaso, solo arrastré los archivos
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/cargar.PNG)
+
+Damos click en siguiente, nos aparecerá una ventana de configuración de usuarios, dejamos todo por defecto y daremos en siguiente, nos aparecerá una ventana de clase de almacenamiento, aquí eligiremos de acuerdo con la necesidad que tengamos en el momento, en este caso como la actividad  es de caracter académica, elegimos la opción estandar, que no tiene algún costo asociado, damos click en siguiente y por último en cargar.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/almacenamiento.PNG)
+
+Una vez hemos hecho esto, solo damos en cargar, y ya nos aparecerán los archivos dentro del bucket.
+
+Ahora solo debemos seleccionar todos los archivos, y en el botón de acciones, habrá una opcion que nos permitirá volver visibles todos los archivos, seleccionamos esa opción.
+
+Hecho esto, solo nos queda abrir el archivo index en el navegador, se nos verá así
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/amaxons3.PNG)
+
+Sin embargo, la aplicación aún no es funcional y debemos conectarla al backend.
+
+### Configuración del sistema EC2
+
+Para crear una instancia EC2, simplemente ingresamos a servicios y buscamos la opción del EC2, que esta en el menú de informática, una vez a quí solo damos en el botón de lanzar instancia.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/instancias2.PNG)
+
+Hecho esto, nos saldrá una cantidad de pasos a realizar, comensando con la elección del tipo de instancia que se desea crear, en este caso vamos a seleccionar la Amazon Linux AMI 2018.03.0, que cuenta con java y algunos programas más que nos serán de utilidad.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/seleccion.PNG)
+
+Proseguiremos seleccionando el tamaño de la máquina como se muestra en la imagen y luego damos en next.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/step2.PNG)
+
+Despues nos saldrá un menú de que pide la configuración de la instancia, aquí solo damos en siguiente.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/step3.PNG)
+
+El almacenamiento lo dejamos como aparece por defecto con 8GB de memoria y damos click en next.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/step4.PNG)
+
+En la ventana de tags, lo dejamos por defecto y damos en siguiente.
+
+En la ventana de Security group, debemmos crear uno nuevo, con el fin de poder controlar la entrada y salida de esta instancia, vamos a configurar como se ve en la imagen.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/step6.PNG)
+
+Como vemos, lo que hice fue adicionar 2 nuevas reglas que me permiten abrir los puertos 5432 y el 8080 correspondientes a postgresql y el de tomcat, que es donde se ejecuta el servicio rest.
+
+Hecho esto damos en review and launcn, nos saldrá un resumen de la instancia, damos en launch.
+
+Nos saldrá una ventana que nos pedirá un llave para realizar la conexiónde manera remota, en mi caso yo ya tengo una creada, pero en caso contrario, solo seleccionamos crear una nueva llave, la cual se nos descargará y es la que usaremos más tarde para conectar con la máquina.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/keypair.PNG)
+
+Ya la podremos ver en nuestra lista de instancias.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/instancias.PNG)
+
+Ahora debemos conectar la máquina de manera remota, para ello, debemos abrir una ventana de consola donde descargamos la llave y escribimos el siguiente código.
+
+``$ ssh -i "migue1994.pem" ec2-user@ec2-3-88-130-241.compute-1.amazonaws.com``
+
+nos deberá aparecer esto.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/ec2.PNG)
+
+Estando aquí, debemos instalar algunas herramientas que son [git](https://linuxconcept.com/install-git-on-rhel-7-operating-system/), [maven](https://docs.aws.amazon.com/neptune/latest/userguide/iam-auth-connect-prerq.html) y java
+
+para instalar llava, debemos introducir los siguientes códigos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/installljava.PNG)
+
+Una vez que hayamos realizado lo anterior, solo debemos clonar el contenido que tengo en este repositorio, que contiene el backend de la aplicación.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/clonando.PNG)
+
