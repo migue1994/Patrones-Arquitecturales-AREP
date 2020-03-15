@@ -1,5 +1,5 @@
 var apiclient = (function () {
-	var appUrl = 'http://ec2-3-86-85-118.compute-1.amazonaws.com:8080/personas';
+	var appUrl = 'http://ec2-3-88-130-241.compute-1.amazonaws.com:8080/personas';
 	return {
 		postPersona: function (persona){
 			var postRequest=$.ajax({

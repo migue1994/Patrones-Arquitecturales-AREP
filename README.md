@@ -183,3 +183,17 @@ Luego debemos conectarla base de datos, para esto debemos extraer el endpoint qu
 
 Vamos al archivo configuration.properties que se encuentra en la aplicación web y modificamos el archivo, de tal manera que se vea así
 
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/applicationproperties.PNG)
+
+Una vez hecho esto, solo actualizamos nuestro repoositorio git, y realizamos pull en nuestra máquina remota, ahora solo debemos ejecutar el servicio rest, mediante el código ``$ mvn spring-boot:run`` en nuestra máquina remota, nos aparecerá la siguiente pantalla.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/spring.PNG)
+
+Por último, debemos actualizar la url hacia donde apunta el fronend de la aplicación con el vpn de la máquina ec2 que creamos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/updatefront.PNG)
+
+Hecho esto, solo debemos voler a cargar el archivo js que modificamos al bucket que creamos al principio, y ya podremos ejecutar correctamente la aplicación como se puede ver en la siguiente imagen.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/app.PNG)
+
