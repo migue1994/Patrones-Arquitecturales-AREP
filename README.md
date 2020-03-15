@@ -149,3 +149,37 @@ Una vez que hayamos realizado lo anterior, solo debemos clonar el contenido que 
 
 ![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/clonando.PNG)
 
+Con esto, ya tenemos configurado nuestro S3 y EC2, ahora procederemos a crear la base de datos.
+
+### Base de datos RDS
+
+Para crear la base de datos, debemos ir nuevamente al menú de servicios y seleccionar la opción de RDS que se encuentra en el menú de bases de datos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/rds.PNG)
+
+Estando ahí solo damos en el botón de create data base.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/createdatabase.PNG)
+
+nos saldrá una ventana donde debmos configurar la base de datos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/motor.PNG)
+
+Definimos una contraseña.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/pass.PNG)
+
+por último, damos click en el boton de create database.
+
+Esperamos por un tiempo mientras se crea la base de datos, despues la seleccionamos y presionamos en el botón modify, esto es para poder modificar ciertas configuraciones que hicieron falta.
+
+Entre ellas, debemos volver la base de datos pública, con el fín de que podamos conectarla a la aplicación web, y debemos selecionar el VPC que creamos anteriormente, para que estas puedan hablarse.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/basepublica.PNG)
+
+Luego debemos conectarla base de datos, para esto debemos extraer el endpoint que se muestra cuendo seleccionamos la instancia en la lista de bases de datos que tenemos.
+
+![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/settings.PNG)
+
+Vamos al archivo configuration.properties que se encuentra en la aplicación web y modificamos el archivo, de tal manera que se vea así
+
