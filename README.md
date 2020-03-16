@@ -196,4 +196,3 @@ Por último, debemos actualizar la url hacia donde apunta el fronend de la aplic
 Hecho esto, solo debemos voler a cargar el archivo js que modificamos al bucket que creamos al principio, y ya podremos ejecutar correctamente la aplicación como se puede ver en la siguiente imagen.
 
 ![](https://github.com/migue1994/Patrones-Arquitecturales-AREP/blob/master/img/app.PNG)
-
