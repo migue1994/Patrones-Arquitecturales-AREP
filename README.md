@@ -41,6 +41,10 @@ Esto permitirá descagar todo el contenido de este repositorio en su máquina lo
 
 [LICENSE.txt](LICENSE)
 
+## Video
+
+[Video](https://drive.google.com/file/d/1H5_2dktKcKAly8-n9lL0YXQ8i3WCECT2/view?usp=sharing)
+
 ## Tutorial
 
 ### Configuración del S3
